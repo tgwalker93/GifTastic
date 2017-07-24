@@ -1,13 +1,16 @@
       // Initial array of movies
-      var giphys = ["Pikachu", "Sonic", "Mario", "Donkey Kong"];
+      var giphys = ["Pikachu", "Sonic", "Mario", "Donkey Kong", "Link", "Kirby", "Spyro", "Megaman"];
 
       // displayMovieInfo function re-renders the HTML to display the appropriate content
       function displayGiphyInfo() {
 
+      	$("#giphyView").html("");
+
+
         var giphyName = $(this).attr("data-name");
         // Example queryURL for Giphy API
         var apiKey = "api_key=dc6zaTOxFJmzC";
-        var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=" + giphyName;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=" + giphyName;
 
 
         // Creating an AJAX call for the specific movie button being clicked
@@ -25,16 +28,20 @@
           // var giphy = $("<iframe>").attr("src", giphyURL);
           // giphyDiv.append(giphy);
           var giphyCount = 0;
-          for(i=0; i<5; i++){
-              var giphyURL = response.data[i].images.fixed_width.url;
+          for(i=0; i<10; i++){
+			  var iDiv = $("<div id='giphyWithRating'>");
+			  var giphyRating = "<h1> Rating: " + response.data[i].rating + "</h1>";
+			  iDiv.append(giphyRating);
+              var giphyURL = response.data[i].images.fixed_width_still.url;
               var giphy = $("<img>").attr("src", giphyURL);
               giphy.attr("class", "giphyResult");
               giphy.attr("data-giphycount", giphyCount);
               giphy.attr("data-name", giphyName);
               giphyCount++;
-              giphy.attr("data-isMoving", true);
+              giphy.attr("data-isMoving", "false");
               //.attr( )
-              giphyDiv.append(giphy);
+              iDiv.append(giphy);
+              giphyDiv.append(iDiv);
           }
           // var isStill
           // on click for i giphy
@@ -105,7 +112,7 @@
       	var giphyCount = $(this).attr("data-giphycount");
         // Example queryURL for Giphy API
         var apiKey = "api_key=dc6zaTOxFJmzC";
-        var queryURL = "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=" + giphy;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=" + giphy;
 
 
         // Creating an AJAX call for the specific movie button being clicked
