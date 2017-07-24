@@ -1,7 +1,6 @@
-      // Initial array of movies
-      var giphys = ["Pikachu", "Sonic", "Mario", "Donkey Kong", "Link", "Kirby", "Spyro", "Megaman"];
+     var giphys = ["Pikachu", "Sonic", "Mario", "Donkey Kong", "Link", "Kirby", "Spyro", "Megaman"];
 
-      // displayMovieInfo function re-renders the HTML to display the appropriate content
+
       function displayGiphyInfo() {
 
       	$("#giphyView").html("");
@@ -24,9 +23,6 @@
           var giphyDiv = $("<div>");
 
 
-          // var giphyURL = response.data[0].embed_url;
-          // var giphy = $("<iframe>").attr("src", giphyURL);
-          // giphyDiv.append(giphy);
           var giphyCount = 0;
           for(i=0; i<10; i++){
 			  var iDiv = $("<div id='giphyWithRating'>");
@@ -43,12 +39,7 @@
               iDiv.append(giphy);
               giphyDiv.append(iDiv);
           }
-          // var isStill
-          // on click for i giphy
-          // 	if isStill === true :
-          // 		i = response.data.GIPHY
-          			// ELSE 
-          			//STILL IMAGE
+
 
 
 
@@ -78,7 +69,6 @@
           a.addClass("giphy");
           // Adding a data-attribute
           a.attr("data-name", giphys[i]);
-          //a.attr("id", giphys[i]);
           // Providing the initial button text
           a.text(giphys[i]);
           // Adding the button to the buttons-view div
